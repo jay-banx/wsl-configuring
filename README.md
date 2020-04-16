@@ -1,5 +1,19 @@
 # WSL configuring
 
+## Updating the WSL 2 Linux kernel (in Windows)
+
+<https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel>
+
+## Set default WSL version 2 (in Windows)
+
+```ps
+wsl --set-default-version 2
+```
+
+## Install Ubuntu (in Windows)
+
+[Ubuntu in Microsoft Store](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6)
+
 ## Install fonts (in Windows)
 
 - [FiraCode NF](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip) <sup>(download link)</sup>
