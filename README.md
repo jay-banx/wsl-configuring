@@ -23,7 +23,7 @@ wsl --set-default-version 2
 
 ### Set fonts
 
-**Add to**: `setting.json`
+Add to: `setting.json`
 
 ```json
 "editor.fontFamily": "'FiraCode NF'",
@@ -36,10 +36,23 @@ wsl --set-default-version 2
 
 - [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 
+## Update & Upgrade Ubuntu
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
 ## Install [Zsh](https://github.com/zsh-users/zsh)
 
 ```bash
 sudo apt install zsh
+zsh
+```
+
+## Set Zsh as default shell
+
+```zsh
+chsh -s $(which zsh)
 ```
 
 ## Install [Zinit](https://github.com/zdharma/zinit)
@@ -52,31 +65,39 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/i
 
 ### [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-**Add to** `~/.zshrc`:
+1. Add to `~/.zshrc`:
 
-```zsh
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-```
+   ```zsh
+   zinit ice depth=1; zinit light romkatv/powerlevel10k
+   ```
 
-**Configure theme**:
+2. Restart terminal
 
-```zsh
-p10k configure
-```
+3. Configure theme:
 
-**_or_**
+   ```zsh
+   p10k configure
+   ```
 
-**Install theme from [dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)**:
+   **_or_**
 
-```zsh
-config checkout
-```
+   1. Install theme from [dotfiles](https://www.atlassian.com/git/tutorials/dotfiles):
+
+      ```zsh
+      config checkout
+      ```
+
+   2. Add to `~/.zshrc`:
+
+      ```zsh
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      ```
 
 ## Install Zsh plugins
 
 ### [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [Highlighting](https://github.com/zdharma/fast-syntax-highlighting), [Completions](https://github.com/zsh-users/zsh-completions)
 
-**Add to** `~/.zshrc`:
+Add to `~/.zshrc`:
 
 ```zsh
 zinit wait lucid for \
@@ -90,7 +111,7 @@ zinit wait lucid for \
 
 ### [nvm](https://github.com/lukechilds/zsh-nvm)
 
-**Add to** `~/.zshrc`:
+Add to `~/.zshrc`:
 
 ```zsh
 zinit ice wait lucid
@@ -102,7 +123,7 @@ export NVM_LAZY_LOAD=true
 
 ### [LS_COLORS](https://github.com/trapd00r/LS_COLORS)
 
-**Add to** `~/.zshrc`:
+Add to `~/.zshrc`:
 
 ```zsh
 zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
@@ -113,30 +134,24 @@ zinit light trapd00r/LS_COLORS
 
 ## Set aliases
 
-**Add to** `~/.zshrc`:
+1. Add to `~/.zshrc`:
 
-```zsh
-source $HOME/.aliases
-```
+   ```zsh
+   source $HOME/.zsh_aliases
+   ```
 
-**Add to** `~/.bashrc`:
+2. Add to `~/.zsh_aliases` and `~/.bash_aliases`:
 
-```bash
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
-```
+   ```zsh
+   alias ls='ls --color=auto'
+   alias la='ls -a --color=auto'
+   alias ll='ls -l --color=auto'
+   alias lla='ls -la --color=auto'
+   ```
 
-**Add to** `~/.aliases`:
+3. Restart terminal
 
-```zsh
-alias ls='ls --color=auto'
-alias la='ls -a --color=auto'
-alias ll='ls -l --color=auto'
-alias lla='ls -la --color=auto'
-```
-
-## Install node.js (via nvm)
+## Install node.js
 
 ```zsh
 nvm install node
