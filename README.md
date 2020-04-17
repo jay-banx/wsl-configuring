@@ -95,18 +95,22 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/i
 
 ## Install Zsh plugins
 
-### [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [Highlighting](https://github.com/zdharma/fast-syntax-highlighting), [Completions](https://github.com/zsh-users/zsh-completions)
+### [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
 Add to `~/.zshrc`:
 
 ```zsh
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+```
+
+### [Completions](https://github.com/zsh-users/zsh-completions)
+
+Add to `~/.zshrc`:
+
+```zsh
+zinit ice wait lucid blockf
+zinit light zsh-users/zsh-completions
 ```
 
 ### [nvm](https://github.com/lukechilds/zsh-nvm)
