@@ -1,25 +1,25 @@
 # WSL configuring
 
-## Updating the WSL 2 Linux kernel (in Windows)
+## Updating the WSL 2 Linux kernel (on Windows)
 
 <https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel>
 
-## Set default WSL version 2 (in Windows)
+## Set default WSL version 2 (on Windows)
 
 ```ps
 wsl --set-default-version 2
 ```
 
-## Install Ubuntu (in Windows)
+## Install Ubuntu (on Windows)
 
 [Ubuntu in Microsoft Store](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6)
 
-## Install fonts (in Windows)
+## Install fonts (on Windows)
 
 - [FiraCode NF](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip) <sup>(download link)</sup>
 - [MesloLGS NF](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k)
 
-## VS Code (in Windows)
+## VS Code (on Windows)
 
 ### Set fonts
 
@@ -36,34 +36,32 @@ Add to: `setting.json`
 
 - [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 
-## Update & Upgrade Ubuntu
+## Update & Upgrade distribution (on Ubuntu)
 
 ```bash
 sudo apt update && sudo apt upgrade
 ```
 
-## Install [Zsh](https://github.com/zsh-users/zsh)
+## Install [Zsh](https://github.com/zsh-users/zsh) (on Ubuntu)
 
 ```bash
 sudo apt install zsh
 zsh
 ```
 
-## Set Zsh as default shell
+## Set Zsh as default shell (on Ubuntu)
 
 ```zsh
 chsh -s $(which zsh)
 ```
 
-## Install [Zinit](https://github.com/zdharma/zinit)
+## Install [Zinit](https://github.com/zdharma/zinit) (on Ubuntu)
 
 ```zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 ```
 
-## Install Zsh theme
-
-### [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+## Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k) (on Ubuntu)
 
 1. Add to `~/.zshrc`:
 
@@ -93,7 +91,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/i
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       ```
 
-## Install Zsh plugins
+## Install Zsh plugins (on Ubuntu)
 
 ### [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
@@ -136,7 +134,7 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
 zinit light trapd00r/LS_COLORS
 ```
 
-## Set aliases
+## Set aliases (on Ubuntu)
 
 1. Add to `~/.zshrc`:
 
@@ -155,8 +153,40 @@ zinit light trapd00r/LS_COLORS
 
 3. Restart terminal
 
-## Install node.js
+## Install node.js (on Ubuntu)
 
 ```zsh
 nvm install node
 ```
+
+## Configure git
+
+### Set user name and email address
+
+1. Configure git (on Windows)
+
+   ```ps
+   git config --global user.name "User Name"
+   git config --global user.email username@example.com
+   ```
+
+2. Configure git (on Ubuntu)
+
+   ```zsh
+   git config --global user.name "User Name"
+   git config --global user.email username@example.com
+   ```
+
+### Sharing Git credentials between Windows and WSL
+
+1. Configure the credential manager (on Windows)
+
+   ```ps
+   git config --global credential.helper wincred
+   ```
+
+2. Configure the credential manager (on Ubuntu)
+
+   ```zsh
+   git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"
+   ```
